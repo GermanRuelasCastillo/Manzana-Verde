@@ -1,6 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:manzana_verde/custom/manzana_styles.dart';
+import 'package:manzana_verde/pages/almuerzos.dart';
 
 class ItemPedido extends StatefulWidget {
   final pedido;
@@ -51,7 +53,14 @@ class _ItemPedidoState extends State<ItemPedido> {
                   ),
                   color: ManzanaStyles.thirdColor,
                   textColor: ManzanaStyles.fourthColor,
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      CupertinoPageRoute(
+                        fullscreenDialog: true,
+                        builder: (context) => Almuerzos(),
+                      ),
+                    );
+                  },
                 ),
         ],
       ),
