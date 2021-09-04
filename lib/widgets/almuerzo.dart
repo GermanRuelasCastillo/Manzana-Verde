@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:manzana_verde/ManzanaIcons.dart';
 import 'package:manzana_verde/custom/manzana_styles.dart';
+import 'package:manzana_verde/widgets/titulo_bar.dart';
 
 class Almuerzo extends StatefulWidget {
   final almuerzo;
@@ -63,20 +63,7 @@ class _AlmuerzoState extends State<Almuerzo> {
                   ),
                 ),
                 this.widget.almuerzo["recomendado"] == true
-                    ? Container(
-                        alignment: Alignment.center,
-                        height: 35,
-                        width: 120,
-                        color: Color.fromRGBO(53, 178, 102, 0.1),
-                        child: Text('Recomendado',
-                            textAlign: TextAlign.center,
-                            style: GoogleFonts.openSans(
-                                textStyle: TextStyle(
-                                    fontSize: 14,
-                                    decoration: TextDecoration.none,
-                                    fontWeight: FontWeight.w600,
-                                    color: ManzanaStyles.primaryColor))),
-                      )
+                    ? ManzanaRecomendado()
                     : SizedBox()
               ],
             ),
@@ -97,9 +84,11 @@ class _AlmuerzoState extends State<Almuerzo> {
                 ),
                 Row(
                   children: [
-                    Padding(
-                        padding: EdgeInsets.only(left: 5, right: 5),
-                        child: SvgPicture.asset('assets/icons/carbs.svg')),
+                    this.widget.almuerzo["bajoCarbohidratos"] == true
+                        ? Padding(
+                            padding: EdgeInsets.only(left: 5, right: 5),
+                            child: SvgPicture.asset('assets/icons/carbs.svg'))
+                        : SizedBox(),
                     this.widget.almuerzo["bajoGluten"] == true
                         ? Padding(
                             padding: EdgeInsets.only(left: 5, right: 5),
@@ -110,7 +99,7 @@ class _AlmuerzoState extends State<Almuerzo> {
                             padding: EdgeInsets.only(left: 5, right: 5),
                             child: SvgPicture.asset('assets/icons/sugar.svg'))
                         : SizedBox(),
-                    this.widget.almuerzo["bajoCarbohidratos"] == true
+                    this.widget.almuerzo["noEngorda"] == true
                         ? Padding(
                             padding: EdgeInsets.only(left: 5, right: 5),
                             child: SvgPicture.asset('assets/icons/fat.svg'))

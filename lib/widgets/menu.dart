@@ -24,7 +24,7 @@ class _MenuState extends State<Menu> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return Stack(
+    return Row(
       children: [
         Positioned(
           bottom: 0,
