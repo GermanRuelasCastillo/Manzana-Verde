@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:manzana_verde/pages/mis_pedidos.dart';
 
-void main() {
+// void main() {
+//   runApp(MyApp());
+// }
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(MyApp());
 }
 
@@ -12,9 +17,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Manzana Verde Test',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
         color: Color.fromRGBO(229, 229, 229, 1),
         home: MisPedidos());
   }

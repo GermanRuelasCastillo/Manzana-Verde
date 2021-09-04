@@ -94,47 +94,61 @@ class _ItemPedidoState extends State<ItemPedido> {
               border: Border.all(width: 1, color: ManzanaStyles.fourthColor),
               borderRadius: BorderRadius.all(Radius.circular(10.0)),
             ),
-            child: Row(
-              // textDirection: TextDirection.rtl,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Container(
-                  height: 80,
-                  width: 80,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(12.0)),
-                      image: DecorationImage(
-                          image: NetworkImage(this.almuerzo[0]['image']),
-                          fit: BoxFit.cover)),
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      width: MediaQuery.of(context).size.width * 0.5,
-                      child: Text(
-                        this.almuerzo[0]['nombre'],
-                        maxLines: 2,
-                        style: GoogleFonts.openSans(
-                            textStyle: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.w600,
-                          color: ManzanaStyles.primaryColor,
-                        )),
+            child: this.almuerzo.length > 0
+                ? Row(
+                    // textDirection: TextDirection.rtl,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (_) {
+                            return DetailScreen(
+                              image: this.almuerzo[0]["image"] ?? '',
+                            );
+                          }));
+                        },
+                        child: Container(
+                          height: 80,
+                          width: 80,
+                          decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(12.0)),
+                              image: DecorationImage(
+                                  image:
+                                      NetworkImage(this.almuerzo[0]['image']),
+                                  fit: BoxFit.cover)),
+                        ),
                       ),
-                    ),
-                    SubTitulo(
-                      titulo: this.almuerzo[0]['calorias'] + 'Kcal',
-                    )
-                  ],
-                ),
-                InkWell(
-                  onTap: _eliminarPedido,
-                  child: SvgPicture.asset('assets/icons/delete.svg'),
-                )
-              ],
-            ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            width: MediaQuery.of(context).size.width * 0.5,
+                            child: Text(
+                              this.almuerzo[0]['nombre'] ?? '',
+                              maxLines: 2,
+                              style: GoogleFonts.openSans(
+                                  textStyle: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w600,
+                                color: ManzanaStyles.primaryColor,
+                              )),
+                            ),
+                          ),
+                          SubTitulo(
+                            titulo: this.almuerzo[0]['calorias'] ?? '' + 'Kcal',
+                          )
+                        ],
+                      ),
+                      InkWell(
+                        onTap: _eliminarPedido,
+                        child: SvgPicture.asset('assets/icons/delete.svg'),
+                      )
+                    ],
+                  )
+                : SizedBox(),
           );
   }
 

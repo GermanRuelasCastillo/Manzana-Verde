@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:manzana_verde/ManzanaIcons.dart';
 import 'package:manzana_verde/bloc/pedido_bloc.dart';
 import 'package:manzana_verde/custom/manzana_styles.dart';
 import 'package:manzana_verde/widgets/item_pedido.dart';
@@ -18,7 +17,6 @@ class MisPedidos extends StatefulWidget {
 
 class _MisPedidosState extends State<MisPedidos> {
   DatePickerController _controller = DatePickerController();
-  DateTime _fechaSeleccionada = DateTime.now();
   final pedidosBloc = new PedidosBloc();
   @override
   Widget build(BuildContext context) {
@@ -31,6 +29,7 @@ class _MisPedidosState extends State<MisPedidos> {
               child: Column(
                 children: [
                   SizedBox(height: 15),
+                  // HEADER
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -49,10 +48,11 @@ class _MisPedidosState extends State<MisPedidos> {
                       // TODO: HACER FUNCIONALIDADES DE NIVEL Y BOTON DE AUTO
                       SvgPicture.asset('assets/level.svg'),
                       SvgPicture.asset('assets/auto.svg'),
-                      Icon(ManzanaIcons.dinner)
+                      SvgPicture.asset('assets/icons/dinner.svg'),
                     ],
                   ),
                   SizedBox(height: 20),
+                  // LINEA DE CALORIAS
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [Text('0Kcal'), Text('22000Kcal')],
@@ -85,13 +85,45 @@ class _MisPedidosState extends State<MisPedidos> {
                     selectionColor: ManzanaStyles.thirdColor,
                     selectedTextColor: ManzanaStyles.fourthColor,
                     deactivatedColor: ManzanaStyles.fourthColor,
-                    onDateChange: (date) {
-                      // New date selected
-                      print(date);
-                      setState(() {
-                        _fechaSeleccionada = date;
-                      });
-                    },
+                    onDateChange: (date) {},
+                  ),
+                  Divider(
+                    color: ManzanaStyles.fourthColor,
+                  ),
+                  Container(
+                    alignment: Alignment.center,
+                    height: 70,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        SvgPicture.asset('assets/icons/maletin.svg'),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'Entregar en:',
+                              style: GoogleFonts.openSans(
+                                  textStyle: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w600,
+                                      color: ManzanaStyles.secondaryColor)),
+                            ),
+                            Text('Av Mariscal Ramón Castilla 1155',
+                                style: GoogleFonts.openSans(
+                                    textStyle: TextStyle(
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w600,
+                                        color: ManzanaStyles.fourthColor)))
+                          ],
+                        ),
+                        Icon(Icons.arrow_right_outlined)
+                      ],
+                    ),
+                  ),
+                  Divider(
+                    color: ManzanaStyles.fourthColor,
                   ),
                   SizedBox(height: 10),
                   StreamBuilder(

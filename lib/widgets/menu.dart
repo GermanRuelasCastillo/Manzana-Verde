@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:manzana_verde/custom/manzana_styles.dart';
 
@@ -31,7 +32,7 @@ class _MenuState extends State<Menu> {
           left: 0,
           child: Container(
             width: size.width,
-            height: 100,
+            height: 80,
             child: Stack(
               children: [
                 CustomPaint(
@@ -53,14 +54,13 @@ class _MenuState extends State<Menu> {
                       children: [
                         Column(
                           children: [
-                            IconButton(
-                              padding: EdgeInsets.only(bottom: 0, top: 15),
-                              icon: Icon(Icons.calendar_today,
-                                  color: this.widget.index == 0
-                                      ? ManzanaStyles.primaryColor
-                                      : ManzanaStyles.secondaryColor),
-                              onPressed: () {},
-                            ),
+                            Padding(
+                                padding: EdgeInsets.only(bottom: 0, top: 15),
+                                child: SvgPicture.asset(
+                                    'assets/icons/calendar.svg',
+                                    color: this.widget.index == 0
+                                        ? ManzanaStyles.primaryColor
+                                        : ManzanaStyles.secondaryColor)),
                             Text('Hoy',
                                 style: this.widget.index == 0
                                     ? textStyleActive
@@ -69,14 +69,13 @@ class _MenuState extends State<Menu> {
                         ),
                         Column(
                           children: [
-                            IconButton(
-                              padding: EdgeInsets.only(bottom: 0, top: 15),
-                              icon: Icon(Icons.local_dining_rounded,
-                                  color: this.widget.index == 1
-                                      ? ManzanaStyles.primaryColor
-                                      : ManzanaStyles.secondaryColor),
-                              onPressed: () {},
-                            ),
+                            Padding(
+                                padding: EdgeInsets.only(bottom: 0, top: 15),
+                                child: SvgPicture.asset(
+                                    'assets/icons/dinner_menu.svg',
+                                    color: this.widget.index == 1
+                                        ? ManzanaStyles.primaryColor
+                                        : ManzanaStyles.secondaryColor)),
                             Text('Mis Pedidos',
                                 style: this.widget.index == 1
                                     ? textStyleActive
@@ -88,14 +87,13 @@ class _MenuState extends State<Menu> {
                         ),
                         Column(
                           children: [
-                            IconButton(
-                              padding: EdgeInsets.only(bottom: 0, top: 15),
-                              icon: Icon(Icons.restaurant,
-                                  color: this.widget.index == 2
-                                      ? ManzanaStyles.primaryColor
-                                      : ManzanaStyles.secondaryColor),
-                              onPressed: () {},
-                            ),
+                            Padding(
+                                padding: EdgeInsets.only(bottom: 0, top: 15),
+                                child: SvgPicture.asset(
+                                    'assets/icons/tenedores.svg',
+                                    color: this.widget.index == 2
+                                        ? ManzanaStyles.primaryColor
+                                        : ManzanaStyles.secondaryColor)),
                             Text('Comidas',
                                 style: this.widget.index == 2
                                     ? textStyleActive
@@ -104,14 +102,13 @@ class _MenuState extends State<Menu> {
                         ),
                         Column(
                           children: [
-                            IconButton(
-                              padding: EdgeInsets.only(bottom: 0, top: 15),
-                              icon: Icon(Icons.medical_services,
-                                  color: this.widget.index == 3
-                                      ? ManzanaStyles.primaryColor
-                                      : ManzanaStyles.secondaryColor),
-                              onPressed: () {},
-                            ),
+                            Padding(
+                                padding: EdgeInsets.only(bottom: 0, top: 15),
+                                child: SvgPicture.asset(
+                                    'assets/icons/coach.svg',
+                                    color: this.widget.index == 3
+                                        ? ManzanaStyles.primaryColor
+                                        : ManzanaStyles.secondaryColor)),
                             Text('Coach',
                                 style: this.widget.index == 3
                                     ? textStyleActive
